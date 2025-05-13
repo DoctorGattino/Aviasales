@@ -4,26 +4,59 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "dev": "vite --host",
+    "build": "vite build",
+    "lint": "eslint . --config .eslintrc.mjs",
+    "lint:fix": "eslint ./src --fix --color --config .eslintrc.mjs",
+    "preview": "vite preview",
+    "format": "prettier . --write \"src/**/*.{js,jsx}\"",
+    "prepare": "husky"
   },
   "dependencies": {
+    "@fontsource/open-sans": "^5.1.1",
+    "@reduxjs/toolkit": "^2.6.0",
+    "@types/react-lottie": "^1.2.10",
+    "antd": "^5.24.2",
+    "axios": "^1.9.0",
+    "date-fns": "^4.1.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-lottie": "^1.2.10",
+    "react-redux": "^9.2.0",
+    "redux": "^5.0.1"
   },
   "devDependencies": {
-    "@eslint/js": "^9.22.0",
-    "@types/react": "^19.0.10",
-    "@types/react-dom": "^19.0.4",
-    "@vitejs/plugin-react-swc": "^3.8.0",
-    "eslint": "^9.22.0",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-react-refresh": "^0.4.19",
-    "globals": "^16.0.0",
-    "typescript": "~5.7.2",
-    "typescript-eslint": "^8.26.1",
-    "vite": "^6.3.1"
+    "@babel/eslint-parser": "^7.26.8",
+    "@eslint/js": "^9.19.0",
+    "@types/react": "^19.1.4",
+    "@types/react-dom": "^19.1.4",
+    "@types/react-redux": "^7.1.34",
+    "@vitejs/plugin-react": "^4.3.4",
+    "@vitejs/plugin-react-swc": "^3.9.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^9.19.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.18",
+    "globals": "^15.14.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3",
+    "prettier": "^3.5.2",
+    "sass-embedded": "^1.88.0",
+    "vite": "^6.1.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,jsx}": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
   }
 }
